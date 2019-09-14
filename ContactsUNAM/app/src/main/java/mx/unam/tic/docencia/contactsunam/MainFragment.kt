@@ -1,6 +1,7 @@
 package mx.unam.tic.docencia.contactsunam
 
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 //MainFragment
 
 class MainFragment : Fragment() {
+
     private lateinit var contactAdapter: ContactAdapter
 
     private var isTablet = false
@@ -64,6 +66,17 @@ class MainFragment : Fragment() {
         }
         contactsRecyclerView.adapter = contactAdapter
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode== RESUL_SAVE_CONTACT){
+         //   if(resultCode== Activity.RESULT_OK){
+         //   if(requestCode== RESUL_SAVE_CONTACT){
+            val contact=data?.getSerializableExtra("contact") as Contact
+            contactAdapter.addContact(contact,2)
+         //   }
+        }
     }
 
     companion object {
