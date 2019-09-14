@@ -2,6 +2,8 @@
     <string name="app_name">ContactsUNAM</string>
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_name">Nombre</string>
+    <string name="hint_lastname">Apellido</string>
+    <string name="hint_phone">Teléfono</string>
+    <string name="btn_save">Guardar</string>
 </resources>
