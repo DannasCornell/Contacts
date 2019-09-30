@@ -8,16 +8,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ShareCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cybertch.fragmentsexample.adapters.ContactAdapter
 import com.cybertch.fragmentsexample.model.Contact
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.fragment_register.*
 
 //MainFragment
 
 class MainFragment : Fragment() {
 
     private lateinit var contactAdapter: ContactAdapter
+    //private val contact: Contact = Contact()
 
     private var isTablet = false
 
@@ -59,8 +62,12 @@ class MainFragment : Fragment() {
                     .replace(R.id.containerDetail, DetailFragment.newInstance(it))
                     .commit()
             } else {
+                /*
+                contact.name = nameTextInputLayout.editText?.text.toString()
+                contact.lastname = lastNameTextInputLayout.editText?.text.toString()*/
+
                 val detailIntent = Intent(activity, DetailActivity::class.java)
-                detailIntent.putExtra("contactParam", it)
+                detailIntent.putExtra("contactParam", it )
                 startActivity(detailIntent)
             }
         }
@@ -78,6 +85,7 @@ class MainFragment : Fragment() {
          //   }
         }
     }
+
 
     companion object {
         /**

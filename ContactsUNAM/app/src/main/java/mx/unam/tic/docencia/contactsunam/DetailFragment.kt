@@ -1,13 +1,21 @@
 package mx.unam.tic.docencia.contactsunam
 
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import com.cybertch.fragmentsexample.adapters.ContactAdapter
 import com.cybertch.fragmentsexample.model.Contact
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_detail.*
+import kotlinx.android.synthetic.main.fragment_detail.view.*
 import kotlinx.android.synthetic.main.item_contact.*
 
 //DetailFragment
@@ -24,6 +32,7 @@ private const val ARG_CONTACT_PARAM = "contactParam"
 class DetailFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var contact: Contact? = null
+    private lateinit var contactAdapter: ContactAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +41,7 @@ class DetailFragment : Fragment() {
             contact = it.getSerializable(ARG_CONTACT_PARAM) as Contact
         }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +55,10 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         nameTextView.text=contact?.name
         lastnameTextView.text=contact?.lastname
+    }
+
+    fun remove(){
+        contact?.id?.let { contactAdapter.removeContact(it) }
     }
 
 
